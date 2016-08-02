@@ -1,4 +1,4 @@
-<html ng-app>
+<html ng-app='demo'>
     <head>
         <title>Aplicação Angular JS</title>
         <meta charset="UTF-8">
@@ -19,8 +19,8 @@
                     <tr ng-repeat="item in itens">
                         <td><strong>{{ item.produto }}</strong></td>
                         <td>{{ item.quantidade }}</td>
-                        <td>{{item.precoUnidade}}</td>
-                        <td><strong>{{precofinal}}</strong></td>
+                        <td>{{item.precoUnidade| currency}}</td>
+                        <td><strong>{{item.precoFinal()| currency}}</strong></td>
                     </tr>
                 </tbody>
             </table>
@@ -29,14 +29,16 @@
                 <label>Produto:</label>
                 <input type="text" ng-model="item.produto">
                 <label>Quantidade:</label>
-                <input type="number" ng-model="item.quantidade">
+                <input type="number" ng-model="item.quantidade" currency-mask>
                 <label>Preço da unidade:</label>
-                <input type="text" ng-model="item.precoUnidade">
-                <button ng-click="adicionaItem()">adicionar ítem</button>
+                <input type="text" placeholder="" ng-model="item.precoUnidade" currency-mask>
+                <button ng-click="adicionaItem()">Adicionar Ítem</button>
             </form>
+            <h1><strong>Valor total: {{item.precoTotal}}</strong></h1>
         </div>
         
         <script src="http://code.angularjs.org/1.0.1/angular-1.0.1.min.js"></script>
+        <script src="ng-mask/ng-currency-mask.min.js"></script>
         <script src="script.js"></script>
     </body>
 </html>
