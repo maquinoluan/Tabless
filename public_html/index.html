@@ -1,44 +1,48 @@
-<html ng-app='demo'>
-    <head>
-        <title>Aplicação Angular JS</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>  
-        <div ng-controller="ListaComprasController">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Produto</th>
-                        <th>Quantidade</th>
-                        <th>Preço unitário</th>
-                        <th>Preço final</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="item in itens">
-                        <td><strong>{{ item.produto }}</strong></td>
-                        <td>{{ item.quantidade }}</td>
-                        <td>{{item.precoUnidade| currency}}</td>
-                        <td><strong>{{item.precoFinal()| currency}}</strong></td>
-                    </tr>
-                </tbody>
-            </table>
-            
-            <form class="form-inline" name="formItem">
-                <label>Produto:</label>
-                <input type="text" ng-model="item.produto">
-                <label>Quantidade:</label>
-                <input type="number" ng-model="item.quantidade" currency-mask>
-                <label>Preço da unidade:</label>
-                <input type="text" placeholder="" ng-model="item.precoUnidade" currency-mask>
-                <button ng-click="adicionaItem()">Adicionar Ítem</button>
-            </form>
-            <h1><strong>Valor total: {{item.precoTotal}}</strong></h1>
-        </div>
-        
-        <script src="http://code.angularjs.org/1.0.1/angular-1.0.1.min.js"></script>
-        <script src="ng-mask/ng-currency-mask.min.js"></script>
-        <script src="script.js"></script>
-    </body>
+<html ng-app='demo' lang="pt-br">
+
+<head>
+    <title>Aplicação Angular JS</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <div ng-controller="ListaComprasController">
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Produto</th>
+                    <th>Quantidade</th>
+                    <th>Preço unitário</th>
+                    <th>Preço final</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in itens">
+                    <td><strong>{{item.produto }}</strong></td>
+                    <td>{{ item.quantidade }}</td>
+                    <td>{{item.precoUnidade| currency}}</td>
+                    <td><strong>{{item.precoFinal()| currency}}</strong></td>
+                    <h1><strong>Valor total: {{ precoTotal | currency }}</strong></h1>
+                </tr>
+            </tbody>
+        </table>
+        <form class="form-inline" name="formItem">
+            <label>Produto:</label>
+            <input type="text" ng-model="item.produto">
+            <label>Quantidade:</label>
+            <input type="number" ng-model="item.quantidade">
+            <label>Preço da unidade:</label>
+            <input type="text" placeholder="" ng-model="item.precoUnidade">
+            <button ng-click="adicionar(item)">Adicionar Ítem</button>
+        </form>
+
+    </div>
+
+    <script src="http://code.angularjs.org/1.0.1/angular-1.0.1.min.js"></script>
+    <script src="ng-mask/ng-currency-mask.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
 </html>
