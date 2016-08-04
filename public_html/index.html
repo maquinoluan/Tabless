@@ -1,48 +1,107 @@
 <html ng-app='demo' lang="pt-br">
 
 <head>
-    <title>Aplicação Angular JS</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Feira</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
 </head>
 
 <body>
+    <nav class="navbar" id="cor-primaria">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#" id="cor-texto-primaria">
+                    Sistema Feira
+                </a>
+            </div>
+        </div>
+    </nav>
     <div ng-controller="ListaComprasController">
+      <div class="col-md-4">
+          <section id="segunda-section">
+              <div class="well">
+                  <form class="form-inline" name="formItem">
+                    <div class="form-group">
+                      <label>Produto:</label><br>
+                      <input type="text" class="form-control" ng-model="item.produto"><br>
+                      <label>Quantidade:</label><br>
+                      <input type="number" class="form-control" ng-model="item.quantidade"><br>
+                      <label>Preço da unidade:</label><br>
+                      <input type="text" class="form-control" placeholder="" ng-model="item.precoUnidade"><br><br>
+                      <button type="button" class="btn btn-primary btn-lg btn-block" ng-click="adicionar(item)">Comprar</button>
+                    </div>
+                  </form>
+                  <h1><strong>Valor total: {{ precoTotal | currency }}</strong></h1>
+              </div>
+          </section>
+      </div>
+        <div class="col-md-8">
+            <section id="primeira-section">
+                <div class="well">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <h3>Produto</h3>
+                        </div>
+                        <div class="col-md-3">
+                            <h3>Quantidade</h3>
+                        </div>
+                        <div class="col-md-3">
+                            <h3>Preço unitário</h3>
+                        </div>
+                        <div class="col-md-3">
+                            <h3>Preço final</h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="container" ng-repeat="item in itens">
+                            <div class="col-md-3">
+                                <strong>{{item.produto }}</strong>
+                            </div>
+                            <div class="col-md-2">
+                                <td>{{ item.quantidade }}</td>
+                            </div>
+                            <div class="col-md-2">
+                                <td>{{item.precoUnidade| currency}}</td>
+                            </div>
+                            <div class="col-md-2">
+                                <td>{{item.precoFinal()| currency}}</td>
+                            </div>
+                        </div>
+                    </div>
+            </section>
+            </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <section id="terceira-section">
+                    <div class="well">
+                        <form class="form-inline" name="formItem">
+                          <div class="form-group">
+                            <label>Produto:</label><br>
+                            <input type="text" class="form-control" ng-model="item.produto"><br>
+                            <label>Quantidade:</label><br>
+                            <input type="number" class="form-control" ng-model="item.quantidade"><br>
+                            <label>Preço da unidade:</label><br>
+                            <input type="text" class="form-control" placeholder="" ng-model="item.precoUnidade"><br><br>
+                            <button type="button" class="btn btn-primary btn-lg btn-block" ng-click="adicionar(item)">Cadastrar</button>
+                          </div>
+                        </form>
+                        <h1><strong>Valor total: {{ precoTotal | currency }}</strong></h1>
+                    </div>
+                </section>
+            </div>
+          </div>
 
-        <table>
-            <thead>
-                <tr>
-                    <th>Produto</th>
-                    <th>Quantidade</th>
-                    <th>Preço unitário</th>
-                    <th>Preço final</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="item in itens">
-                    <td><strong>{{item.produto }}</strong></td>
-                    <td>{{ item.quantidade }}</td>
-                    <td>{{item.precoUnidade| currency}}</td>
-                    <td><strong>{{item.precoFinal()| currency}}</strong></td>
-                    <h1><strong>Valor total: {{ precoTotal | currency }}</strong></h1>
-                </tr>
-            </tbody>
-        </table>
-        <form class="form-inline" name="formItem">
-            <label>Produto:</label>
-            <input type="text" ng-model="item.produto">
-            <label>Quantidade:</label>
-            <input type="number" ng-model="item.quantidade">
-            <label>Preço da unidade:</label>
-            <input type="text" placeholder="" ng-model="item.precoUnidade">
-            <button ng-click="adicionar(item)">Adicionar Ítem</button>
-        </form>
 
-    </div>
-
-    <script src="http://code.angularjs.org/1.0.1/angular-1.0.1.min.js"></script>
-    <script src="ng-mask/ng-currency-mask.min.js"></script>
-    <script src="script.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="http://code.angularjs.org/1.0.1/angular-1.0.1.min.js"></script>
+        <script src="ng-mask/ng-currency-mask.min.js"></script>
+        <script src="script.js"></script>
+        <script src="js/bootstrap.min.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,31 @@
+#cor-primaria{
+  background-color: #2196F3;
+}
+#cor-secundaria{
+  background-color: #004D40;
+}
+#cor-texto-primaria{
+  color: #FFFFFF;
+}
+
+
+#primeira-section{
+  width: auto;
+  height: auto;
+  margin: 0 auto;
+}
+#segunda-section{
+  width: auto;
+  height: auto;
+  margin: 0 auto;
+}
+#terceira-section{
+  width: 435px;
+}
+body{
+  background-color: #E3F2FD;
+}
+
+.btn.btn-primary.btn-lg.btn-block{
+  background-color: #2196F3 !important;
+}

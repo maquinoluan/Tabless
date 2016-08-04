@@ -22,6 +22,8 @@ function ListaComprasController($scope) {
     $scope.adicionar = function (item) {
       $scope.itens.push(angular.copy(item));
       $scope.somar();
+      var lS = (item.produto);
+      localStorage.setItem(lS,$('#inputResult').val(item));
     }
 
 }
